@@ -10,3 +10,7 @@ def hello():
 @app.route("/julia")
 def hello_from_julia():
     return "Hello From Julia!"
+
+@app.route('/hello/<username>')
+def show_user_profile(username):
+    return 'Hello %s' % username
