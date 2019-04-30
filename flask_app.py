@@ -1,5 +1,5 @@
 # flask_app.py
-from flask import Flask
+from flask import Flask, jsonify
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
@@ -20,3 +20,15 @@ def greet_username(username):
 @app.route('/about')
 def about():
     return 'The about page'
+
+
+@app.route('/api')
+def api():
+    data = {
+        'name': 'Fleabag',
+        'year': '2019',
+        'watched': 'yesterday',
+        'similar_to': 'Killing_Eve'
+    }
+
+    return jsonify(data)
