@@ -1,5 +1,7 @@
 # flask_app.py
 from flask import Flask, jsonify
+import pandas as pd
+
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
@@ -32,3 +34,13 @@ def api():
     }
 
     return jsonify(data)
+
+
+@app.route('/pandas')
+def pandas_api():
+
+    data = {'name': ['Fleabag', 'Killing_Eve', 'Dr Who'], 'some_numbers': [3, 4, 12]}
+
+    pandas_data = pd.DataFrame(data=data)
+
+    return pandas_data.to_json()
